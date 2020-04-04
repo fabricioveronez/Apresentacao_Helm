@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-deploy
+spec:
+  selector:
+    matchLabels:
+      app: app-deploy
+  template:
+    metadata:
+      labels:
+        app: app-deploy
+      {{- if .Values.monitoring }}  
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/port:   '80'
+      {{ end }}            
+    spec:
+      containers:
+      - name: app
+        image: fabricioveronez/metricasapi
+        ports:
+        - containerPort: 80
+        env:
+          - name: "MONGODB_URI"
+            value: {{ .Values.connectionString | quote }}
+            
