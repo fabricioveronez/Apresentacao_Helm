@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}-deploy
+  name: {{ .Release.Name }}-app-deploy
 spec:
   selector:
     matchLabels:
@@ -10,11 +10,11 @@ spec:
     metadata:
       labels:
         app: app-deploy
-      {{- if .Values.monitoring }}  
+      {{- if .Values.metrics }}  
       annotations:
         prometheus.io/scrape: 'true'
         prometheus.io/port:   '80'
-      {{ end }}            
+      {{- end }}            
     spec:
       containers:
       - name: app
@@ -23,5 +23,5 @@ spec:
         - containerPort: 80
         env:
           - name: "MONGODB_URI"
-            value: {{ .Values.connectionString | quote }}
+            value: "mongodb://{{ .Values.mongoDb.rootUser }}:{{ .Values.mongoDb.rootPassword }}@{{ .Release.Name }}-mongodb-service:27017/admin"
             

@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-app-service  
+spec:
+  selector:
+    app: app-deploy
+  ports:
+  - port: 80
+    targetPort: 80
+  type: LoadBalancer
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-mongodb-service  
+spec:
+  selector:
+    app: mongodb-deploy
+  ports:
+  - port: 27017
+    targetPort: 27017
+    name: mongodb
+  {{- if .Values.metrics }}
+  - port: 9216
+    targetPort: 9216
+    name: exporter
+  {{- end }}
+  type: LoadBalancer
