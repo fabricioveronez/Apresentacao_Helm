@@ -1,0 +1,7 @@
+metrics: true
+
+version: latest
+
+mongoDb:
+  rootUser: "mongouser"
+  rootPassword: "GPX4WOwpcvOc9Wm70gAG8It7tKA0Cy090ZVO82cEJsExogsMDY"  

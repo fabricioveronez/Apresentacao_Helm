@@ -1,7 +1,0 @@
-metrics: true
-
-connectionString: "mongodb://mongouser:GPX4WOwpcvOc9Wm70gAG8It7tKA0Cy090ZVO82cEJsExogsMDY@mongodb-service:27017/admin"
-
-mongoDb:
-  rootUser: "mongouser"
-  rootPassword: "GPX4WOwpcvOc9Wm70gAG8It7tKA0Cy090ZVO82cEJsExogsMDY"

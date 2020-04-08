@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-app-deploy
+spec:
+  selector:
+    matchLabels:
+      app: app-deploy
+  template:
+    metadata:
+      labels:
+        app: app-deploy
+      {{- if .Values.metrics }}  
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/port:   '80'
+      {{- end }}            
+    spec:
+      containers:
+      - name: app
+        image: fabricioveronez/metricasapi:{{ .Values.version }}
+        ports:
+        - containerPort: 80
+        env:
+          - name: "MONGO_USERNAME"
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Release.Name }}-mongodb-secrets
+                key: MONGO_INITDB_ROOT_USERNAME
+          - name: "MONGO_PASSWORD"
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Release.Name }}-mongodb-secrets
+                key: MONGO_INITDB_ROOT_PASSWORD
+          - name: "MONGO_URL"
+            value: {{ .Release.Name }}-mongodb-service
+              
+            

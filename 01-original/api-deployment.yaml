@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: teste-app-deploy
+spec:
+  selector:
+    matchLabels:
+      app: app-deploy
+  template:
+    metadata:
+      labels:
+        app: app-deploy
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/port:   '80'
+    spec:
+      containers:
+      - name: app
+        image: fabricioveronez/metricasapi:latest
+        ports:
+        - containerPort: 80
+        env:
+          - name: "MONGO_USERNAME"
+            value: mongouser
+          - name: "MONGO_PASSWORD"
+            value: GPX4WOwpcvOc9Wm70gAG8It7tKA0Cy090ZVO82cEJsExogsMDY
+          - name: "MONGO_URL"
+            value: teste-mongodb-service

@@ -18,10 +18,15 @@ spec:
     spec:
       containers:
       - name: app
-        image: fabricioveronez/metricasapi
+        image: fabricioveronez/metricasapi:{{ .Values.version }}
         ports:
         - containerPort: 80
         env:
-          - name: "MONGODB_URI"
-            value: "mongodb://{{ .Values.mongoDb.rootUser }}:{{ .Values.mongoDb.rootPassword }}@{{ .Release.Name }}-mongodb-service:27017/admin"
+          - name: "MONGO_USERNAME"
+            value: {{ .Values.mongoDb.rootUser }}
+          - name: "MONGO_PASSWORD"
+            value: {{ .Values.mongoDb.rootPassword }}
+          - name: "MONGO_URL"
+            value: {{ .Release.Name }}-mongodb-service
+            
             
