@@ -5,10 +5,10 @@ services:
     ports:
       - '8081:8080'
     volumes:
-    - chartmuseum_data:/charts
+    - chartmuseum_data:/home/chartmuseum
     environment:
         DEBUG: 1       
         STORAGE: local 
-        STORAGE_LOCAL_ROOTDIR: /charts
+        STORAGE_LOCAL_ROOTDIR: /home/chartmuseum
 volumes:
   chartmuseum_data:    
