@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: app
-        image: fabricioveronez/metricasapi:latest
+        image: fabricioveronez/metricasapi:v1
         ports:
         - containerPort: 80
         env:
