@@ -1,4 +1,4 @@
-{{ .Chart.Name }} foi instalado com o nome de release{{ .Release.Name }}.
+{{ .Chart.Name }} foi instalado com o nome de {{ .Release.Name }}.
 
 Para obter mais informações utilize os comandos abaixo:
 

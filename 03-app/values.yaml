@@ -1,6 +1,6 @@
 metrics: true
 
-version: latest
+version: v1
 
 mongoDb:
   rootUser: "mongouser"
