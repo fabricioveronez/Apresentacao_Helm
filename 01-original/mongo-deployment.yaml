@@ -19,17 +19,19 @@ spec:
         image: mongo:4.2.1
         ports:
         - containerPort: 27017
-          name: mongodb
+          name: mongodb        
         env:
           - name: "MONGO_INITDB_ROOT_USERNAME"
             value: mongouser
           - name: "MONGO_INITDB_ROOT_PASSWORD"
             value: GPX4WOwpcvOc9Wm70gAG8It7tKA0Cy090ZVO82cEJsExogsMDY
+        resources: {}
       - name: mongodb-exporter
         image: fabricioveronez/mongo_exporter
         ports:
         - containerPort: 9216
-          name: exporter
+          name: exporter        
         env:
         - name: "MONGODB_URI"
           value: "mongodb://mongouser:GPX4WOwpcvOc9Wm70gAG8It7tKA0Cy090ZVO82cEJsExogsMDY@localhost:27017"
+        resources: {}

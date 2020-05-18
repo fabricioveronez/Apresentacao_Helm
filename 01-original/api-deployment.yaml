@@ -26,3 +26,4 @@ spec:
             value: GPX4WOwpcvOc9Wm70gAG8It7tKA0Cy090ZVO82cEJsExogsMDY
           - name: "MONGO_URL"
             value: teste-mongodb-service
+        resources: {}
