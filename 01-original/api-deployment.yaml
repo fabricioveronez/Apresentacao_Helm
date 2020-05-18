@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: teste-app-deploy
+  name: app-deploy
 spec:
   selector:
     matchLabels:
@@ -25,5 +25,5 @@ spec:
           - name: "MONGO_PASSWORD"
             value: GPX4WOwpcvOc9Wm70gAG8It7tKA0Cy090ZVO82cEJsExogsMDY
           - name: "MONGO_URL"
-            value: teste-mongodb-service
+            value: mongodb-service
         resources: {}

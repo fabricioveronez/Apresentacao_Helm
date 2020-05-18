@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: teste-mongodb-deploy
+  name: mongodb-deploy
 spec:
   selector:
     matchLabels:
